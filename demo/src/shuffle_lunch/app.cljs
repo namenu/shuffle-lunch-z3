@@ -48,8 +48,8 @@
     (js/translate (+ size padding) 0))
   (js/pop)
 
-  (js/textSize 30)
-  (js/text (str "고인 정도: " (str total-pooled)) padding (+ 50 (* cardinality size))))
+  (js/textSize 35)
+  (js/text (str "고인 정도: " total-pooled) padding (+ 50 (* cardinality size))))
 
 (set! (.. js/window -setup) setup)
 (set! (.. js/window -draw) draw)
