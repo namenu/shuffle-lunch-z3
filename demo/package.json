@@ -1,0 +1,17 @@
+{
+  "name": "shuffle",
+  "version": "1.0.0",
+  "scripts": {
+    "build:watch": "shadow-cljs watch app",
+    "build": "shadow-cljs release app"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.8.14"
+  },
+  "dependencies": {
+    "create-react-class": "^15.6.3",
+    "p5": "^0.7.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
