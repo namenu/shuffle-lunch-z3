@@ -20,6 +20,8 @@ def build_solver():
                                   for i in range(N)
                                   for j in range(i + 1, N)]))
 
+    o.add(total_pooled >= 0)
+
     o.minimize(total_pooled)
 
     return o
@@ -52,7 +54,7 @@ def dump_edn(score, ordered_users):
 (def cardinality %d)""" % (score, edn_format.dumps(ordered_users, keyword_keys=True), M))
 
 
-mode = 2
+mode = 0
 if mode == 0:
     # dump original
     dump_edn(sum([pooled_score_group(g) for g in range(0, N, M)]), users)
@@ -63,6 +65,7 @@ elif mode == 1:
 elif mode == 2:
     # dump shuffled
     z3.set_param("smt.random_seed", 10)
+    #z3.set_option("smt.arith.solver", 1)  # for sparse constraints
     s = build_solver()
     s.set("timeout", 3000)
     s.check()

@@ -33,8 +33,15 @@
     (js/translate (/ size 2) (/ size 2))
     (doseq [[u y] (map vector users xs)
             :when (not (= (:team u) "(dummy)"))]
+      (js/stroke 0.5)
       (apply js/fill (team->hsb (:team u)))
-      (js/ellipse 0 y r r))
+      (js/ellipse 0 y r r)
+
+      (js/noStroke)
+      (js/fill 1)
+      (js/textAlign js/CENTER)
+      (js/textSize 20)
+      #_(js/text (:name u) 0 (+ y 7)))
     (js/pop))
   )
 
